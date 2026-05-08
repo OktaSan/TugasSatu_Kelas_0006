@@ -58,6 +58,18 @@ function renderingTugas() {
         const buttonHapus = document.createElement("button");
         buttonHapus.textContent = "Hapus";
 
+        const tombolStatus = document.createElement("button");
+
+        if (tugas.status === "Progress") {
+            tombolStatus.textContent = "Done";
+        } else {
+            tombolStatus.textContent = "Progress";
+        }
+
+        tombolStatus.addEventListener("click", function () {
+            ubahStatusTugas(tugas.id);
+        });
+
         buttonHapus.addEventListener("click", function () {
             hapusTugas(tugas.id);
         });
@@ -67,6 +79,7 @@ function renderingTugas() {
         itemTugas.appendChild(tanggalTugas);
         itemTugas.appendChild(statusTugas);
         itemTugas.appendChild(buttonHapus);
+        itemTugas.appendChild(tombolStatus);
 
         daftarTugas.appendChild(itemTugas)
     })
@@ -77,6 +90,20 @@ function hapusTugas(id) {
         return tugas.id !== id
     })
     renderingTugas()
+}
+
+function ubahStatusTugas(id) {
+    const tugasDipilih = dataTugas.find(function (tugas) {
+        return tugas.id === id;
+    });
+
+    if (tugasDipilih.status === "Progress") {
+        tugasDipilih.status = "Done";
+    } else {
+        tugasDipilih.status = "Progress";
+    }
+
+    renderingTugas();
 }
 
 formTugas.addEventListener("submit", function (event) {
