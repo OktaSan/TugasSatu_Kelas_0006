@@ -24,7 +24,7 @@ function validasiForm(tugas, tanggalTugas) {
 function tambahTugas(tugas, tanggalTugas) {
     const tugasBaru = {
         id: Date.now(),
-        name: tugas,
+        nama: tugas,
         tanggal: tanggalTugas,
         status: "Progress"
     }
@@ -36,6 +36,31 @@ function resetForm() {
     inputTugas.value = "";
     inputTanggal.value = "";
     inputTugas.focus();
+}
+
+function renderingTugas() {
+    daftarTugas.innerHTML = "";
+
+    dataTugas.forEach(function (tugas) {
+        const itemTugas = document.createElement("li");
+
+        const namaTugas = document.createElement("div");
+        namaTugas.classList.add("todo-item-title");
+        namaTugas.textContent = tugas.nama;
+
+        const tanggalTugas = document.createElement("span");
+        tanggalTugas.classList.add("todo-item-date");
+        tanggalTugas.textContent = "Tanggal: " + tugas.tanggal;
+
+        const statusTugas = document.createElement("span");
+        statusTugas.textContent = "Status: " + tugas.status;
+
+        itemTugas.appendChild(namaTugas);
+        itemTugas.appendChild(tanggalTugas);
+        itemTugas.appendChild(statusTugas);
+
+        daftarTugas.appendChild(itemTugas)
+    })
 }
 
 formTugas.addEventListener("submit", function (event) {
@@ -51,7 +76,7 @@ formTugas.addEventListener("submit", function (event) {
     }
 
     tambahTugas(tugas, tanggalTugas)
+    renderingTugas();
     resetForm();
-    console.log(dataTugas)
 })
 
