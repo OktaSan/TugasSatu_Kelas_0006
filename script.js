@@ -99,6 +99,12 @@ function renderingTugas() {
 }
 
 function hapusTugas(id) {
+    const yakinHapus = confirm("Yakin ingin menghapus tugas ini?")
+
+    if (yakinHapus == false) {
+        return
+    }
+
     dataTugas = dataTugas.filter(function (tugas) {
         return tugas.id !== id
     })
