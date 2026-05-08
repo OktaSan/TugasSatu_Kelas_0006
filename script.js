@@ -85,12 +85,14 @@ function renderingTugas() {
         const actionTugas = document.createElement("div")
         actionTugas.classList.add("todo-actions")
 
+        actionTugas.appendChild(tombolStatus);
+        actionTugas.appendChild(buttonEdit);
+        actionTugas.appendChild(buttonHapus);
+
         itemTugas.appendChild(namaTugas);
         itemTugas.appendChild(tanggalTugas);
         itemTugas.appendChild(statusTugas);
-        itemTugas.appendChild(buttonHapus);
-        itemTugas.appendChild(tombolStatus);
-        itemTugas.appendChild(buttonEdit);
+        itemTugas.appendChild(actionTugas);
 
         daftarTugas.appendChild(itemTugas)
     })
