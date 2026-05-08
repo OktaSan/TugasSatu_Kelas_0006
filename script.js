@@ -21,6 +21,17 @@ function validasiForm(tugas, tanggalTugas) {
     return true
 }
 
+function tambahTugas(tugas, tanggalTugas) {
+    const tugasBaru = {
+        id: Date.now(),
+        name: tugas,
+        tanggal: tanggalTugas,
+        status: "Progress"
+    }
+
+    dataTugas.push(tugasBaru);
+}
+
 formTugas.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -33,6 +44,7 @@ formTugas.addEventListener("submit", function (event) {
         return
     }
 
-    console.log("Data sesuai: ", tugas, tanggalTugas)
+    tambahTugas(tugas, tanggalTugas)
+    console.log(dataTugas)
 })
 
