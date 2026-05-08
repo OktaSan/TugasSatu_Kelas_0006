@@ -1,34 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    
-  </head>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aplikasi Todo List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
 <body>
-  <div class="card">
-    <h1>Todo List</h1>
+  <main class="app">
+    <section class="todo-card">
+      <header class="todo-header">
+        <h1>Todo List</h1>
+        <p>Kelola tugas harian dengan status dan tanggal deadline.</p>
+      </header>
 
-    <div id="formTodo">
-        <input type="text" id="inputTask" placeholder="Masukkan Tugas">
-        <button id="btnTambahTodo">Tambah</button>
-        <input type="date" id="tanggal" >
-    </div>
+      <form class="todo-form" id="todoForm">
+        <div class="form-group">
+          <label for="inputTask">Nama Tugas</label>
+          <input type="text" id="inputTask" placeholder="Contoh: Belajar JavaScript" />
+        </div>
 
-    
-    <h3>Daftar Tugas</h3>
-    <ul id="listTugas"></ul>
+        <div class="form-group">
+          <label for="tanggal">Tanggal</label>
+          <input type="date" id="tanggal" />
+        </div>
 
+        <button type="submit" id="btnTambahTodo">Tambah Tugas</button>
+      </form>
 
-    <script src="script.js"></script>
-  </div>
+      <section class="todo-section">
+        <h2>Daftar Tugas</h2>
+        <ul class="todo-list" id="listTugas"></ul>
+      </section>
+    </section>
+  </main>
 
-  
-
-    
+  <script src="script.js"></script>
 </body>
 
-
-
+</html>
