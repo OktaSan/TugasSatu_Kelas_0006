@@ -55,6 +55,12 @@ function renderingTugas() {
         const statusTugas = document.createElement("span");
         statusTugas.textContent = "Status: " + tugas.status;
 
+        const buttonEdit = document.createElement("button")
+        buttonEdit.textContent = "Edit"
+        buttonEdit.addEventListener("click", function() {
+            editTugas(tugas.id)
+        })
+
         const buttonHapus = document.createElement("button");
         buttonHapus.textContent = "Hapus";
 
@@ -74,7 +80,7 @@ function renderingTugas() {
             hapusTugas(tugas.id);
         });
 
-        const actionTugas  = document.createElement("div")
+        const actionTugas = document.createElement("div")
         actionTugas.classList.add("todo-actions")
 
         itemTugas.appendChild(namaTugas);
@@ -82,6 +88,7 @@ function renderingTugas() {
         itemTugas.appendChild(statusTugas);
         itemTugas.appendChild(buttonHapus);
         itemTugas.appendChild(tombolStatus);
+        itemTugas.appendChild(buttonEdit);
 
         daftarTugas.appendChild(itemTugas)
     })
@@ -106,6 +113,21 @@ function ubahStatusTugas(id) {
     }
 
     renderingTugas();
+}
+
+function editTugas(id) {
+    const tugasDipilih = dataTugas.find(function (tugas) {
+        return tugas.id === id;
+    })
+
+    if (tugasDipilih === undefined) {
+        return;
+    }
+
+    inputTugas.value = tugasDipilih.nama;
+    inputTanggal.value = tugasDipilih.tanggal;
+    idTugasYangDiedit = tugasDipilih.id;
+    tombolSubmit.textContent = "Simpan Perubahan";
 }
 
 formTugas.addEventListener("submit", function (event) {
