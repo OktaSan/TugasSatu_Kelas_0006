@@ -74,6 +74,8 @@ function renderingTugas() {
             hapusTugas(tugas.id);
         });
 
+        const actionTugas  = document.createElement("div")
+        actionTugas.classList.add("todo-actions")
 
         itemTugas.appendChild(namaTugas);
         itemTugas.appendChild(tanggalTugas);
