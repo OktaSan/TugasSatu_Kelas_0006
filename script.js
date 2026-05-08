@@ -55,12 +55,28 @@ function renderingTugas() {
         const statusTugas = document.createElement("span");
         statusTugas.textContent = "Status: " + tugas.status;
 
+        const buttonHapus = document.createElement("button");
+        buttonHapus.textContent = "Hapus";
+
+        buttonHapus.addEventListener("click", function () {
+            hapusTugas(tugas.id);
+        });
+
+
         itemTugas.appendChild(namaTugas);
         itemTugas.appendChild(tanggalTugas);
         itemTugas.appendChild(statusTugas);
+        itemTugas.appendChild(buttonHapus);
 
         daftarTugas.appendChild(itemTugas)
     })
+}
+
+function hapusTugas(id) {
+    dataTugas = dataTugas.filter(function (tugas) {
+        return tugas.id !== id
+    })
+    renderingTugas()
 }
 
 formTugas.addEventListener("submit", function (event) {
