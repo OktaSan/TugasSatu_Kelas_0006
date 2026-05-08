@@ -65,34 +65,44 @@ body {
     border: none;
     cursor: pointer;
 }
+
 .todo-list {
-  padding-left: 0;
+    padding-left: 0;
 }
 
 .todo-list li {
-  list-style: none;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #cccccc;
-  background-color: #fafafa;
+    list-style: none;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #cccccc;
+    background-color: #fafafa;
 }
 
 .todo-item-title {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .todo-item-date {
-  display: block;
-  margin-top: 5px;
-  color: #555555;
+    display: block;
+    margin-top: 5px;
+    color: #555555;
 }
 
 .todo-actions {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .todo-actions button {
-  margin-right: 5px;
-  padding: 5px 8px;
-  cursor: pointer;
+    margin-right: 5px;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+.tugas-selesai {
+    background-color: #eeeeee;
+}
+
+.tugas-selesai .todo-item-title {
+    text-decoration: line-through;
+    color: grey;
 }
