@@ -32,6 +32,12 @@ function tambahTugas(tugas, tanggalTugas) {
     dataTugas.push(tugasBaru);
 }
 
+function resetForm() {
+    inputTugas.value = "";
+    inputTanggal.value = "";
+    inputTugas.focus();
+}
+
 formTugas.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -45,6 +51,7 @@ formTugas.addEventListener("submit", function (event) {
     }
 
     tambahTugas(tugas, tanggalTugas)
+    resetForm();
     console.log(dataTugas)
 })
 
