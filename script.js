@@ -45,6 +45,9 @@ function renderingTugas() {
 
     dataTugas.forEach(function (tugas) {
         const itemTugas = document.createElement("li");
+        if (tugas.status === "Done") {
+            itemTugas.classList.add("tugas-selesai")
+        }
 
         const namaTugas = document.createElement("div");
         namaTugas.classList.add("todo-item-title");
