@@ -5,7 +5,7 @@ const tombolSubmit = document.getElementById("btnTambahTodo");
 const daftarTugas = document.getElementById("listTugas");
 
 let dataTugas = [];
-let idTugasYangDiEdit = null;
+let idTugasYangDiedit = null;
 
 function validasiForm(tugas, tanggalTugas) {
     if (tugas === "") {
@@ -35,6 +35,8 @@ function tambahTugas(tugas, tanggalTugas) {
 function resetForm() {
     inputTugas.value = "";
     inputTanggal.value = "";
+    idTugasYangDiedit = null;
+    tombolSubmit.textContent = "Tambah Tugas";
     inputTugas.focus();
 }
 
@@ -57,7 +59,7 @@ function renderingTugas() {
 
         const buttonEdit = document.createElement("button")
         buttonEdit.textContent = "Edit"
-        buttonEdit.addEventListener("click", function() {
+        buttonEdit.addEventListener("click", function () {
             editTugas(tugas.id)
         })
 
@@ -130,6 +132,19 @@ function editTugas(id) {
     tombolSubmit.textContent = "Simpan Perubahan";
 }
 
+function simpanEditTugas(namaBaru, tanggalBaru) {
+    const tugasDipilih = dataTugas.find(function (tugas) {
+        return tugas.id === idTugasYangDiedit
+    })
+
+    if (tugasDipilih === undefined) {
+        return
+    }
+
+    tugasDipilih.nama = namaBaru;
+    tugasDipilih.tanggal = tanggalBaru;
+}
+
 formTugas.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -142,8 +157,11 @@ formTugas.addEventListener("submit", function (event) {
         return
     }
 
-    tambahTugas(tugas, tanggalTugas)
+    if (idTugasYangDiedit === null) {
+        tambahTugas(tugas, tanggalTugas);
+    } else {
+        simpanEditTugas(tugas, tanggalTugas);
+    }
     renderingTugas();
     resetForm();
 })
-
