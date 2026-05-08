@@ -7,7 +7,32 @@ const daftarTugas = document.getElementById("listTugas");
 let dataTugas = [];
 let idTugasYangDiEdit = null;
 
+function validasiForm(tugas, tanggalTugas) {
+    if (tugas === "") {
+        alert("Nama tugas tidak boleh kosong WOI!")
+        return false
+    }
+
+    if (tanggalTugas === "") {
+        alert("Tanggal tugas harus diisi, JANGAN KOSONG!!!")
+        return false
+    }
+
+    return true
+}
+
 formTugas.addEventListener("submit", function (event) {
     event.preventDefault();
-    console.log("Button berhasil di tekan!")
+
+    const tugas = inputTugas.value.trim();
+    const tanggalTugas = inputTanggal.value;
+
+    const validForm = validasiForm(tugas, tanggalTugas)
+
+    if (validForm == false) {
+        return
+    }
+
+    console.log("Data sesuai: ", tugas, tanggalTugas)
 })
+
